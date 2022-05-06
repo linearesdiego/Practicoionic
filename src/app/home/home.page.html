@@ -1,0 +1,60 @@
+
+<ion-header [translucent]="true" no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="toggleMenu()">
+        <ion-icon slot="start" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Noticias
+    </ion-title>
+  </ion-toolbar>
+  
+</ion-header>
+<ion-content [fullscreen]="true">
+
+  <ion-searchbar 
+  placeholder="Search"
+  [(ngModel)]="palabraBuscar" 
+  (ionChange)="buscar()" 
+  (ionFocus)="hayFocus()" 
+  (ionBlur)="hayionBlur() "
+  showCancelButton="focus"
+  animated="true">
+</ion-searchbar>
+<div>
+<ion-button type="submit" value="" color="primary" (click)="clickEconomia()">Economia</ion-button>
+<ion-button type="submit" value="" color="primary">Politica</ion-button>
+<ion-button type="submit" value="" color="primary">Deportes</ion-button>
+</div>
+  <ion-card *ngFor="let noticia of Buscar ; let i=index ">
+    <div *ngIf="i<num_noticias">
+      <ion-card-header>
+      <ion-card-title class="tittle"> {{noticia.titulo}}</ion-card-title>
+      <ion-img [src]="noticia.imagen"></ion-img>
+      <ion-card-subtitle class="subtittle"> {{noticia.subtitulo}} </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      {{noticia.contenido}}
+    </ion-card-content>
+    <ion-item color="primary">
+      <ion-label slot="start">Category: {{noticia.categoria}}</ion-label>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" shape="round">
+          <ion-icon slot="start" name="navigate-outline" color="light"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" shape="round">
+          <ion-icon slot="start" name="share-social-outline" color="light"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+    </div>
+  </ion-card>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="mostrarNoticias($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="circles"
+      loadingText=" Cargando Noticias...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
