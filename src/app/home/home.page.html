@@ -9,8 +9,7 @@
     <ion-title>
       Noticias
     </ion-title>
-  </ion-toolbar>
-  
+</ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
 
@@ -23,11 +22,11 @@
   showCancelButton="focus"
   animated="true">
 </ion-searchbar>
-<div>
+<!---<div>
 <ion-button type="submit" value="" color="primary" (click)="clickEconomia()">Economia</ion-button>
 <ion-button type="submit" value="" color="primary">Politica</ion-button>
 <ion-button type="submit" value="" color="primary">Deportes</ion-button>
-</div>
+</div>--->
   <ion-card *ngFor="let noticia of Buscar ; let i=index ">
     <div *ngIf="i<num_noticias">
       <ion-card-header>
